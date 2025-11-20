@@ -7,7 +7,7 @@ export function HomePage() {
             Welcome to GC Scaffold
           </h1>
           <p className="text-xl text-gray-700 dark:text-gray-300 mb-8">
-            A production-ready Docker-based React + Tailwind CSS scaffold
+            A Docker-based React + Tailwind CSS scaffold
           </p>
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 mt-8">
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-white mb-4">
