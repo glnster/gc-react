@@ -1,0 +1,20 @@
+services:
+  app-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gc-scaffold-dev
+    ports:
+      - "${VITE_PORT:-5173}:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - VITE_PORT=${VITE_PORT:-5173}
+    env_file:
+      - .env.development
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+
