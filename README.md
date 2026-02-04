@@ -1,6 +1,6 @@
 # GC React Scaffold
 
-A production-ready Docker-based scaffold for React + Tailwind CSS applications with comprehensive development and production environments.
+A Docker-based scaffold for React + Tailwind CSS applications with comprehensive development and production environments.
 
 ## Features
 
@@ -10,7 +10,7 @@ A production-ready Docker-based scaffold for React + Tailwind CSS applications w
 - 📘 **TypeScript**: Type-safe development
 - 🧪 **Playwright**: End-to-end testing
 - 📚 **Storybook**: Component development and documentation
-- 🔒 **SSL/HTTPS**: Production-ready SSL support with nginx
+- 🔒 **SSL/HTTPS**: SSL support with nginx
 - 🛠️ **Helper Scripts**: Convenient `dock` command for common tasks
 
 ## Quick Start
