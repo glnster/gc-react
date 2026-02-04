@@ -45,25 +45,29 @@ The `dock` helper script provides convenient commands:
 ### Development
 
 ```bash
-./dock dev              # Start development container with live reload
-./dock detached         # Start dev container in background
+./dock dev              # Start development with live reload (foreground)
+./dock dev -d           # Start development in background
+./dock dev --clear-cache # Start development with cleared Docker cache
 ./dock stop             # Stop all containers
-./dock logs             # View container logs
-./dock shell            # Open shell in running container
-./dock status           # Show container status and resource usage
+./dock restart          # Restart development environment
+./dock rebuild          # Rebuild all containers from scratch (no cache)
 ```
 
 ### Production
 
 ```bash
 ./dock prod             # Build and start production container
+./dock prod --clear-cache # Start production with cleared cache
 ```
 
-### Maintenance
+### Utilities
 
 ```bash
-./dock rebuild          # Force rebuild all containers
-./dock prune            # Remove stopped containers and unused images
+./dock logs             # View container logs
+./dock shell            # Open shell in running container
+./dock status           # Show container status and resource usage
+./dock clean            # Clean up Docker resources for THIS PROJECT only
+./dock prune            # System-wide Docker prune (affects all projects)
 ```
 
 ### Help
