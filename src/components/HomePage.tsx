@@ -38,7 +38,35 @@ export function HomePage() {
                 <span className="text-green-500 mr-2">✓</span>
                 Storybook for component development
               </li>
+              <li className="flex items-center">
+                <span className="text-green-500 mr-2">✓</span>
+                Mock API with MSW (Mock Service Worker)
+              </li>
             </ul>
+          </section>
+          <section className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 mt-8">
+            <h2 className="text-2xl font-semibold text-gray-800 dark:text-white mb-4">
+              Quick Start
+            </h2>
+            <div className="text-left space-y-3 text-gray-600 dark:text-gray-400">
+              <p>
+                <strong>Storybook:</strong> Run{' '}
+                <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-sm">
+                  npm run storybook
+                </code>{' '}
+                in a separate terminal, then click the Storybook link in the nav.
+              </p>
+              <p>
+                <strong>Todo App:</strong> Click "Todo App" in the nav to see the MSW mock API in action.
+              </p>
+              <p>
+                <strong>MSW:</strong> Open browser DevTools console to see{' '}
+                <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded text-sm">
+                  [MSW] Mocking enabled
+                </code>{' '}
+                and intercepted requests.
+              </p>
+            </div>
           </section>
         </div>
       </div>

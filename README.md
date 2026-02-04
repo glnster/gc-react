@@ -192,6 +192,61 @@ VITE_API_URL=https://api.example.com
 - [Deployment Guide](./docs/deployment.md) - Production deployment instructions
 - [Testing Guide](./docs/testing.md) - Testing with Playwright
 
+## Mock API (MSW)
+
+This scaffold includes [Mock Service Worker](https://mswjs.io/) for API mocking during development.
+
+### How it works
+- MSW intercepts fetch requests to `/api/*` and returns mock data
+- Mocking is enabled by default in development
+- Handlers are defined in `src/mocks/handlers.ts`
+- Fixture data lives in `src/mocks/fixtures/` as JSON files
+
+### Example: Todo API
+The scaffold includes a working Todo app demonstrating all CRUD operations:
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/todos` | List all todos |
+| GET | `/api/todos/:id` | Get single todo |
+| POST | `/api/todos` | Create todo |
+| PUT | `/api/todos/:id` | Update todo |
+| PATCH | `/api/todos/:id` | Partial update |
+| DELETE | `/api/todos/:id` | Delete todo |
+
+### Disable mocking
+```bash
+VITE_DISABLE_MOCKS=true npm run dev
+```
+
+### Add a new mock endpoint
+1. Add fixture data to `src/mocks/fixtures/your-data.json`
+2. Add handler to `src/mocks/handlers.ts`:
+```typescript
+import yourData from './fixtures/your-data.json'
+
+export const handlers = [
+  // ...existing handlers
+  http.get('/api/your-endpoint', () => {
+    return HttpResponse.json(yourData)
+  }),
+]
+```
+
+### Storybook integration
+Stories automatically use MSW handlers. Override per-story:
+```typescript
+export const ErrorState: Story = {
+  parameters: {
+    msw: {
+      handlers: [
+        http.get('/api/todos', () => new HttpResponse(null, { status: 500 })),
+      ],
+    },
+  },
+}
+```
+
 ## Tech Stack
 
 - **Runtime**: Node.js 20 LTS
