@@ -8,7 +8,8 @@ A Docker-based scaffold for React + Tailwind CSS applications with comprehensive
 - ⚡ **Fast Development**: Vite with hot module replacement
 - 🎨 **Tailwind CSS**: Utility-first CSS framework
 - 📘 **TypeScript**: Type-safe development
-- 🧪 **Playwright**: End-to-end testing
+- 🧪 **Vitest**: Unit and component testing
+- 🎭 **Playwright**: End-to-end testing
 - 📚 **Storybook**: Component development and documentation
 - 🔒 **SSL/HTTPS**: SSL support with nginx
 - 🛠️ **Helper Scripts**: Convenient `dock` command for common tasks
@@ -120,6 +121,12 @@ The development server runs on `http://localhost:5173` with:
 ### Running Tests
 
 ```bash
+# Unit tests
+npm test                # Run unit tests in watch mode
+npm run test:run        # Run unit tests once
+npm run test:coverage   # Run unit tests with coverage
+
+# E2E tests
 npm run test:e2e        # Run all E2E tests
 npm run test:e2e:ui     # Run tests in UI mode
 npm run test:e2e:headed # Run tests with browser visible
@@ -254,7 +261,8 @@ export const ErrorState: Story = {
 - **Build Tool**: Vite 5
 - **Styling**: Tailwind CSS 3
 - **Language**: TypeScript 5
-- **Testing**: Playwright
+- **Unit Testing**: Vitest + React Testing Library
+- **E2E Testing**: Playwright
 - **Component Development**: Storybook 7
 - **Production Server**: nginx (alpine)
 
@@ -263,6 +271,9 @@ export const ErrorState: Story = {
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build
+- `npm test` - Run unit tests in watch mode
+- `npm run test:run` - Run unit tests once
+- `npm run test:coverage` - Run unit tests with coverage
 - `npm run test:e2e` - Run E2E tests
 - `npm run storybook` - Start Storybook
 - `npm run build-storybook` - Build Storybook

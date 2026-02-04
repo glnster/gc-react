@@ -2,9 +2,83 @@
 
 ## Overview
 
-GC Scaffold uses Playwright for end-to-end (E2E) testing. Playwright provides cross-browser testing capabilities and excellent developer experience.
+GC Scaffold uses two testing frameworks:
+- **Vitest** for unit and component testing
+- **Playwright** for end-to-end (E2E) testing
 
-## Running Tests
+---
+
+## Unit Testing with Vitest
+
+Vitest is used for testing individual components and utilities in isolation.
+
+### Running Unit Tests
+
+```bash
+npm test              # Run tests in watch mode
+npm run test:run      # Run tests once
+npm run test:coverage # Run tests with coverage report
+```
+
+### Test Location
+
+Unit tests are co-located with source files using the naming convention:
+- `*.test.ts` or `*.test.tsx`
+- `*.spec.ts` or `*.spec.tsx`
+
+Example: `src/components/Button.test.tsx`
+
+### Writing Unit Tests
+
+```typescript
+import { describe, it, expect, vi } from 'vitest'
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import { MyComponent } from './MyComponent'
+
+describe('MyComponent', () => {
+  it('renders correctly', () => {
+    render(<MyComponent />)
+    expect(screen.getByRole('button')).toBeInTheDocument()
+  })
+
+  it('handles user interaction', async () => {
+    const handleClick = vi.fn()
+    const user = userEvent.setup()
+
+    render(<MyComponent onClick={handleClick} />)
+    await user.click(screen.getByRole('button'))
+
+    expect(handleClick).toHaveBeenCalled()
+  })
+})
+```
+
+### Testing Utilities
+
+- **@testing-library/react**: Render components and query the DOM
+- **@testing-library/user-event**: Simulate user interactions
+- **@testing-library/jest-dom**: Additional matchers like `toBeInTheDocument()`
+- **vi**: Vitest's mocking utility (similar to Jest's `jest`)
+
+### Configuration
+
+Vitest is configured in `vite.config.ts`:
+
+```typescript
+test: {
+  globals: true,
+  environment: 'jsdom',
+  setupFiles: './src/test/setup.ts',
+  include: ['src/**/*.{test,spec}.{ts,tsx}'],
+}
+```
+
+---
+
+## End-to-End Testing with Playwright
+
+## Running E2E Tests
 
 ### Run All Tests
 
